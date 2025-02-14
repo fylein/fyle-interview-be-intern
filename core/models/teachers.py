@@ -11,3 +11,9 @@ class Teacher(db.Model):
 
     def __repr__(self):
         return '<Teacher %r>' % self.id
+    
+    @classmethod
+    def list_teachers(cls):
+        """ Returns a list of Teachers. """
+        list_of_teachers = db.session.execute(db.select(cls)).scalars()
+        return list_of_teachers
